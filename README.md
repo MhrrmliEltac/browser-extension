@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Browser Extension Frontend
 
-## Getting Started
+Bu layihə Next.js 15.4.6 istifadə edərək hazırlanmış browser extension frontend tətbiqidir.
 
-First, run the development server:
+## 🚀 Texnologiyalar
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 15.4.6** - React framework
+- **React 19.1.0** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS 4** - Styling
+- **Radix UI** - Accessible components
+- **Zustand** - State management
+- **Axios** - HTTP client
+- **Lucide React** - Icons
+- **Sonner** - Toast notifications
+
+## 📁 Layihə Strukturu
+
+```
+frontend-next.js/
+├── src/                    # Əsas mənbə kodları
+├── public/                 # Statik fayllar
+├── .next/                  # Next.js build faylları
+├── node_modules/           # Dependencies
+├── package.json            # Layihə konfiqurasiyası
+├── tsconfig.json           # TypeScript konfiqurasiyası
+├── next.config.ts          # Next.js konfiqurasiyası
+├── postcss.config.mjs      # PostCSS konfiqurasiyası
+├── eslint.config.mjs       # ESLint konfiqurasiyası
+└── components.json         # UI components konfiqurasiyası
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Quraşdırma
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Dependencies quraşdırın:**
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Development server başladın:**
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+3. **Production build:**
+   ```bash
+   npm run build
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Production server başladın:**
+   ```bash
+   npm start
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📜 Mövcud Scriptlər
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Development server (Turbopack ilə)
+- `npm run build` - Production build
+- `npm run start` - Production server
+- `npm run lint` - ESLint yoxlaması
 
-## Deploy on Vercel
+## 🔧 Konfiqurasiya
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### TypeScript
+Layihə TypeScript 5 istifadə edir və `tsconfig.json` faylında konfiqurasiya edilib.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tailwind CSS
+Tailwind CSS 4 istifadə olunur və `postcss.config.mjs` faylında konfiqurasiya edilib.
+
+### ESLint
+ESLint 9 istifadə olunur və Next.js konfiqurasiyası ilə birlikdə işləyir.
+
+## 🎨 UI Komponentlər
+
+Layihə Radix UI komponentlərindən istifadə edir:
+- Checkbox
+- Label
+- Və digər accessible komponentlər
+
+## 📦 Əsas Dependencies
+
+### Production Dependencies
+- `next`: 15.4.6
+- `react`: 19.1.0
+- `react-dom`: 19.1.0
+- `@radix-ui/react-checkbox`: ^1.3.3
+- `@radix-ui/react-label`: ^2.1.7
+- `axios`: ^1.11.0
+- `zustand`: ^5.0.7
+- `lucide-react`: ^0.539.0
+- `sonner`: ^2.0.7
+
+### Development Dependencies
+- `typescript`: ^5
+- `tailwindcss`: ^4
+- `eslint`: ^9
+- `@types/react`: ^19
+- `@types/node`: ^20
+
+## 🌐 Development
+
+Development server `http://localhost:3000` ünvanında işləyəcək.
+
+## 📝 Qeydlər
+
+- Layihə Turbopack istifadə edir (daha sürətli development)
+- TypeScript tam dəstəklənir
+- Tailwind CSS 4 yeni versiyası istifadə olunur
+- Radix UI komponentləri accessibility üçün optimallaşdırılıb
