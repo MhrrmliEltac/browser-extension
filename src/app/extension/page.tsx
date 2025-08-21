@@ -6,7 +6,7 @@ import { useExtensionStore } from "@/store/extensionStore";
 import { useEffect } from "react";
 
 export default function Page() {
-    const { extensions, filteredExtension, fetchExtension } = useExtensionStore();
+    const { filteredExtension, fetchExtension } = useExtensionStore();
 
     useEffect(() => {
         fetchExtension();
