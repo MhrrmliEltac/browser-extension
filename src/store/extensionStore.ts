@@ -2,6 +2,8 @@ import {
   deleteExtension,
   Extension,
   getExtension,
+  Response,
+  updateActiveExtension,
   updateExtension,
 } from "@/actions/actions";
 import { create } from "zustand";
@@ -10,9 +12,16 @@ interface ExtensionStore {
   extensions: Extension[];
   filteredExtension: Extension[];
   loading: boolean;
+
   fetchExtension: () => Promise<void>;
-  updateExtension: (id: string, isActive: boolean) => Promise<void>;
-  deleteExtension: (id: string) => Promise<void>;
+  updateExtension: (
+    id: string,
+    formData: FormData
+  ) => Promise<{ message: string; updatedExtension: Extension } | undefined>;
+  updateActiveExtension: (id: string, isActive: boolean) => Promise<any>;
+  deleteExtension: (
+    id: string
+  ) => Promise<{ message: string; deletedExtension: Extension } | undefined>;
   sortedExtension: (tab: string) => void;
 }
 
@@ -32,20 +41,47 @@ export const useExtensionStore = create<ExtensionStore>((set, get) => ({
       });
     }
   },
-  updateExtension: async (id: string, isActive: boolean) => {
-    await updateExtension(id, isActive);
-    set((state: ExtensionStore) => ({
-      extensions: state.extensions.map((ext: Extension) =>
-        ext.id === id ? { ...ext, isActive } : ext
-      ),
+  updateExtension: async (
+    id: string,
+    formData: FormData
+  ): Promise<{ message: string; updatedExtension: Extension } | undefined> => {
+    const response = await updateExtension(id, formData);
+    const updatedExtensions = get().extensions.map((ext) =>
+      ext.id === id ? { ...ext, ...formData } : ext
+    );
+    set(() => ({
+      extensions: updatedExtensions,
+      filteredExtension: updatedExtensions,
     }));
+    return response;
   },
 
-  deleteExtension: async (id: string) => {
-    await deleteExtension(id);
+  updateActiveExtension: async (
+    id: string,
+    isActive: boolean
+  ): Promise<any> => {
+    const response = await updateActiveExtension(id, isActive);
+    const updatedExtensions = get().extensions.map((ext) =>
+      ext.id === id ? { ...ext, isActive } : ext
+    );
+    set(() => ({
+      extensions: updatedExtensions,
+      filteredExtension: updatedExtensions,
+    }));
+    return response;
+  },
+
+  deleteExtension: async (
+    id: string
+  ): Promise<{ message: string; deletedExtension: Extension } | undefined> => {
+    const response = await deleteExtension(id);
     set((state: ExtensionStore) => ({
       extensions: state.extensions.filter((ext: Extension) => ext.id !== id),
+      filteredExtension: state.filteredExtension.filter(
+        (ext: Extension) => ext.id !== id
+      ),
     }));
+    return response;
   },
 
   sortedExtension: (tab: string) => {
